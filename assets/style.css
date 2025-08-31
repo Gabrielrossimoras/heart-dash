@@ -1,0 +1,52 @@
+/* style.css */
+
+/* Cor de fundo e fonte geral */
+body {
+    background-color: #cfd5db;      /* Cinza claro */
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Estilo do título principal */
+.custom-title {
+    color: #153d58;   /* Azul escuro */
+    font-weight: bold;
+}
+
+/* Estilo dos subtítulos */
+.custom-subtitle {
+    color: #343a40;   /* Cinza escuro */
+    font-style: italic;
+}
+
+/* Labels */
+.custom-label {
+    font-weight: bold;
+    color: #153d58;
+}
+
+/* Campos de input */
+.custom-input {
+    color: blue;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+/* Placeholder dos inputs */
+::placeholder {
+    font-style: italic;
+    font-weight: normal;
+    color: #6c757d;  /* Cinza claro */
+}
+
+/* Selects */
+.custom-select {
+    color: blue;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+/* Opções do select */
+.custom-select option {
+    background-color: #cfd2d6;
+    color: #343a40;
+}

@@ -1,0 +1,44 @@
+from dash import html
+from dash.dependencies import Input, Output, State
+import dash_bootstrap_components as dbc
+import joblib
+import pandas as pd
+import numpy as np
+from app import app
+
+modelo = joblib.load('modelo_xgboost.pkl')
+medianas = joblib.load('medianas.pkl')
+
+formulario = dbc.Container([
+    dbc.Row([
+        dbc.Col([
+            dbc.Label("Idade"),
+            dbc.Input(id="idade", type="number", placeholder="Digite a idade"),
+            dbc.Label("Pressão arterial em repouso"),
+            dbc.Input(id="trestbps", type="number"),
+            dbc.Button("Prever", id="btn", n_clicks=0, color="primary")
+        ])
+    ])
+])
+
+layout = html.Div([
+    html.H1("Formulário de Previsão"),
+    formulario,
+    html.Div(id="saida")
+])
+
+@app.callback(
+    Output("saida", "children"),
+    Input("btn", "n_clicks"),
+    [State("idade", "value"), State("trestbps", "value")]
+)
+def prever(n, idade, trestbps):
+    if n == 0:
+        return ""
+    row = medianas.copy()
+    row["age"] = idade
+    row["trestbps"] = trestbps
+    entrada = pd.DataFrame([row])
+    pred = modelo.predict(entrada)[0]
+    return dbc.Alert("Com doença" if pred==1 else "Sem doença",
+                     color="danger" if pred==1 else "success")

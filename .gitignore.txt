@@ -1,0 +1,27 @@
+# Arquivos e pastas do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+.ipynb_checkpoints/
+
+# Ambientes virtuais
+.env
+.venv
+env/
+venv/
+.env.*
+.venv.*
+
+# IDEs e configurações locais
+.vscode/
+.idea/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Modelos salvos
+modelo_xgboost.pkl
+medianas.pkl
