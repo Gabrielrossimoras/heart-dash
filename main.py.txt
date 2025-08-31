@@ -40,4 +40,5 @@ def mostrar_pagina(pathname):
 
 # Executa o app
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Cloud Run escuta na porta 8080 e host 0.0.0.0
+    app.run(debug=False, port=8080, host="0.0.0.0")

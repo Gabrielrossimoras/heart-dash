@@ -1,0 +1,20 @@
+# Dockerfile
+FROM python:3.13.5-slim-bullseye
+
+ENV APP_HOME=/app
+WORKDIR $APP_HOME
+
+# Depêndencias do projeto
+COPY requirements.txt .
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia o restante do código
+COPY . .
+
+# Porta que o app usa
+ENV PORT=8080
+EXPOSE 8080
+
+# Comando de inicialização
+CMD ["python", "main.py"]
